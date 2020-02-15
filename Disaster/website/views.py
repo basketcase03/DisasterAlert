@@ -20,12 +20,12 @@ def send_sms_dnt(request):
 		account_sid=userr.dnt_account_sid
 		auth_token=userr.dnt_auth_token
 		my_twilio=userr.contact_number
-		my_msg=request.POST.get('SMS_send')
+		"""my_msg=request.POST.get('S')"""
 
 		client=Client(account_sid,auth_token)
 		numbers=User_request.objects.filter(pincode=area)
 		for to_num in numbers:
-			client.messages.create(to=to_num.contact_number,from_=my_twilio,body=my_msg)
+			client.messages.create(to=to_num.contact_number,from_=my_twilio,body=area)
 			"""add +91 to phone num. and my_twilio only twilio number"""
 
 
