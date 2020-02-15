@@ -14,6 +14,7 @@ class User_request(models.Model):
   gender=models.CharField(max_length=10,choices=gender_choices)
   pincode=models.IntegerField()
   date_of_birth=models.DateField()
+  user_id=models.IntegerField()
   
 
 
@@ -27,8 +28,7 @@ class dmt(models.Model):
   contact_number=models.CharField(max_length=15)
   email=models.CharField(max_length=100)
   pincode=models.IntegerField()
-  dmt_account_sid=models.CharField(max_length=100,null=True)
-  dmt_auth_token=models.CharField(max_length=100,null=True)
+  dmt_id=models.IntegerField()
   
 
 
@@ -42,8 +42,9 @@ class dnt(models.Model):
   contact_number=models.CharField(max_length=15)
   email=models.CharField(max_length=100)
   pincode=models.IntegerField()
-  dnt_account_sid=models.CharField(max_length=100,null=True)
-  dnt_auth_token=models.CharField(max_length=100,null=True)
+  dnt_account_sid=models.CharField(max_length=100)
+  dnt_auth_token=models.CharField(max_length=100)
+  dnt_id=models.IntegerField()
   
 
 
