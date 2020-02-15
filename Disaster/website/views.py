@@ -15,17 +15,18 @@ def home(request):
 def send_sms_dnt(request):
 	if request.method=='POST':
 		area=request.POST.get('pincode')
+		my_msg=request.POST.get('SMS_send')
 		num=request.user.id
 		userr=dnt.objects.get(dnt_id=num)
 		account_sid=userr.dnt_account_sid
 		auth_token=userr.dnt_auth_token
 		my_twilio=userr.contact_number
-		"""my_msg=request.POST.get('S')"""
+		
 
 		client=Client(account_sid,auth_token)
 		numbers=User_request.objects.filter(pincode=area)
 		for to_num in numbers:
-			client.messages.create(to=to_num.contact_number,from_=my_twilio,body=area)
+			client.messages.create(to=to_num.contact_number,from_=my_twilio,body=my_msg)
 			"""add +91 to phone num. and my_twilio only twilio number"""
 
 
