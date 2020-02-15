@@ -8,7 +8,7 @@ def home(request):
 
 
 def userregister(request):
-	return render(request,'home.html',{})
+	return render(request,'userregister.html',{})
 
 def dntregister(request):
 	return render(request,'home.html',{})
@@ -16,14 +16,14 @@ def dntregister(request):
 def dmtregister(request):
 	return render(request,'home.html',{})
 
-def userlogin(request):
-	return render(request,'home.html',{})
+#def userlogin(request):
+	#return render(request,'home.html',{})
 
 def dntlogin(request):
-	return render(request,'home.html',{})
+	return render(request,'login.html',{})
 
 def dmtlogin(request):
-	return render(request,'home.html',{})
+	return render(request,'login.html',{})
 
 def userprofile(request):
 	return render(request,'home.html',{})
