@@ -1,12 +1,29 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .models import User_request,dmt,Contact_Us
+from twilio.rest import TwilioRestClient
 
 
 # Create your views here.
 
 def home(request):
 	return render(request,'home.html',{})
+
+
+def send_sms_dnt(request):
+	if request.method=='POST':
+		post=User_request()
+		post.user_name=request.POST.get('pincode')
+		num=request.user.id
+		account_sid=
+		auth_token=
+		my_msg=request.POST.get('SMS')
+		post.save()
+		return render(request,'home.html',{})
+
+	else:
+
+		return render(request,'userregister.html',{})
 
 
 def userregister(request):

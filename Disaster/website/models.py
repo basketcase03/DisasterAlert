@@ -14,8 +14,7 @@ class User_request(models.Model):
   gender=models.CharField(max_length=10,choices=gender_choices)
   pincode=models.IntegerField()
   date_of_birth=models.DateField()
-  sos=models.TextField(max_length=700,default="none")
-  sms=models.TextField(max_length=700,default="none")
+  
 
 
   def __str__(self):
@@ -28,12 +27,28 @@ class dmt(models.Model):
   contact_number=models.CharField(max_length=15)
   email=models.CharField(max_length=100)
   pincode=models.IntegerField()
-  sms_sent=models.TextField(max_length=700,default="none")
-  sms_received=models.TextField(max_length=700,default="none")
+  dmt_account_sid=models.CharField(max_length=100,null=True)
+  dmt_auth_token=models.CharField(max_length=100,null=True)
+  
 
 
   def __str__(self):
     return self.dnt_name    
+
+class dnt(models.Model):
+
+  dnt_name=models.CharField(max_length=100)
+  location=models.CharField(max_length=100)
+  contact_number=models.CharField(max_length=15)
+  email=models.CharField(max_length=100)
+  pincode=models.IntegerField()
+  dnt_account_sid=models.CharField(max_length=100,null=True)
+  dnt_auth_token=models.CharField(max_length=100,null=True)
+  
+
+
+  def __str__(self):
+    return self.dnt_name  
 
 
 class Contact_Us(models.Model):
