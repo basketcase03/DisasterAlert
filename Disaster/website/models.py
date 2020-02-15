@@ -19,11 +19,11 @@ class User_request(models.Model):
 
 
   def __str__(self):
-    return self.pincode
+    return self.user_name
 
 class dmt(models.Model):
 
-  dnt_name=models.CharField(max_length=100)
+  dmt_name=models.CharField(max_length=100)
   location=models.CharField(max_length=100)
   contact_number=models.CharField(max_length=15)
   email=models.CharField(max_length=100)

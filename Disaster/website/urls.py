@@ -5,10 +5,11 @@ from . import views
 
 urlpatterns = [
     path('home/', views.home,name="home"),
-    path('userregister/',views.userregister,name="user_register"),
+    path('userregister/',views.userregister,name="userregister"),
     path('dntregister/',views.dntregister,name="dnt_register"),
     path('dmtregister/',views.dmtregister,name="dmt_register"),
    # path('userlogin/',views.userlogin),
+    path('sign_in/',views.signin,name='sign_in'),
     path('dntlogin/',views.dntlogin,name="dnt_login"),
     path('dmtlogin/',views.userregister,name="dmt_login"),
     path('userprofile/',views.userprofile,name="userprofile"),
