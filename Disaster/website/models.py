@@ -36,7 +36,7 @@ class dmt(models.Model):
 
 
   def __str__(self):
-    return self.dnt_name    
+    return self.dmt_name    
 
 class dnt(models.Model):
 
