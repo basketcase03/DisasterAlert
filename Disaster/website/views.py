@@ -113,7 +113,7 @@ def usersignin(request):
             return redirect("userregister")
     else:
         form = UserCreationForm()
-    return render(request, 'signin.html', {'form': form})
+    return render(request, 'usersignin.html', {'form': form})
 
 
 def dntsignin(request):
@@ -128,7 +128,7 @@ def dntsignin(request):
             return redirect("dnt_register")
     else:
         form = UserCreationForm()
-    return render(request, 'signin.html', {'form': form})
+    return render(request, 'dntsignin.html', {'form': form})
 
 def dmtsignin(request):
     if request.method == 'POST':
@@ -142,7 +142,7 @@ def dmtsignin(request):
             return redirect("dmt_register")
     else:
         form = UserCreationForm()
-    return render(request, 'signin.html', {'form': form})        
+    return render(request, 'dmtsignin.html', {'form': form})        
 
 		
 
