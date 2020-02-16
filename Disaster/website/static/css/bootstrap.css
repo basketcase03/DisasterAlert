@@ -1102,7 +1102,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: white;
   text-decoration: underline;
 }
 a:focus {
@@ -1126,7 +1126,7 @@ img {
   height: auto;
 }
 .img-rounded {
-  border-radius: 6px;
+  border-radius: 2px;
 }
 .img-thumbnail {
   display: inline-block;
