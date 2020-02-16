@@ -123,7 +123,7 @@ def dntlogin(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect("dnt_register")
+            return render(request,'dnt_send_sms.html',{})
     else:
         form = UserCreationForm()
     return render(request, 'signin.html', {'form': form})	
