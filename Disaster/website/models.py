@@ -29,6 +29,9 @@ class dmt(models.Model):
   email=models.CharField(max_length=100)
   pincode=models.IntegerField()
   dmt_id=models.IntegerField()
+  dmt_account_sid=models.CharField(max_length=100)
+  dmt_auth_token=models.CharField(max_length=100)
+  
   
 
 

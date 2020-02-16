@@ -36,6 +36,30 @@ def send_sms_dnt(request):
 
 		return render(request,'dnt_send_sms.html',{})
 
+def send_sms_dmt(request):
+	if request.method=='POST':
+		area=request.POST.get('pincode')
+		my_msg=request.POST.get('SMS_send')
+		num=request.user.id
+		userr=dmt.objects.get(dmt_id=num)
+		account_sid=userr.dmt_account_sid
+		auth_token=userr.dmt_auth_token
+		my_twilio=userr.contact_number
+		
+
+		client=Client(account_sid,auth_token)
+		numbers=User_request.objects.filter(pincode=area)
+		for to_num in numbers:
+			client.messages.create(to=to_num.contact_number,from_=my_twilio,body=my_msg)
+			"""add +91 to phone num. and my_twilio only twilio number"""
+
+
+		return render(request,'home.html',{})
+
+	else:
+
+		return render(request,'dmt_send_sms.html',{})
+
 
 
 
@@ -125,14 +149,18 @@ def dmtsignin(request):
 
 def dmtregister(request):
 	if request.method=='POST':
-		post=User_request()
+		post=dmt()
 		post.dmt_name=request.POST.get('person_name')
 		post.location=request.POST.get('address')
 		post.contact_number=request.POST.get('contact_number')
 		post.email=request.POST.get('email')
 		post.pincode=request.POST.get('pincode')
+		post.dmt_account_sid=request.POST.get('account_sid')
+		post.dmt_auth_token=request.POST.get('auth_token')
+		num=request.user.id
+		post.dmt_id=num
 		post.save()
-		return render(request,'dnt_send_sms.html',{})
+		return redirect('dmt_sms')
 
 	else:
 
