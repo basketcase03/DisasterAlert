@@ -34,6 +34,7 @@
     {{ form.as_p}}
  <button type="submit" class="registerbtn">Login</button>
  <input type="hidden" name="next" value={% url "home" %}>
+ <input type="hidden" name="next" value="{%url 'dnt_sms'%}">
 </div>
 
 </form>
