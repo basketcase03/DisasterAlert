@@ -30,7 +30,7 @@ def send_sms_dnt(request):
 			"""add +91 to phone num. and my_twilio only twilio number"""
 
 
-		return render(request,'home.html',{})
+		return render(request,'dnt_send_sms.html',{})
 
 	else:
 
@@ -75,7 +75,7 @@ def userregister(request):
 		post.date_of_birth=request.POST.get('date_of_birth')
 		post.user_id=request.user.id
 		post.save()
-		return render(request,'user_profile.html',{})
+		return render(request,'home.html',{})
 
 	else:
 
