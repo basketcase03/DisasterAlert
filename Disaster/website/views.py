@@ -115,10 +115,34 @@ def dmtregister(request):
 	#return render(request,'home.html',{})
 
 def dntlogin(request):
-	return render(request,'login.html',{})
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect("dnt_register")
+    else:
+        form = UserCreationForm()
+    return render(request, 'signin.html', {'form': form})	
+
 
 def dmtlogin(request):
-	return render(request,'login.html',{})
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect("dmt_register")
+    else:
+        form = UserCreationForm()
+    return render(request, 'signin.html', {'form': form})	
+
 
 def userprofile(request):
 	return render(request,'home.html',{})
