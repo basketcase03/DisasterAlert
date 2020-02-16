@@ -30,7 +30,7 @@ def send_sms_dnt(request):
 			"""add +91 to phone num. and my_twilio only twilio number"""
 
 
-		return render(request,'dnt_send_sms.html',{})
+		return render(request,'home.html',{})
 
 	else:
 
@@ -54,7 +54,7 @@ def send_sms_dmt(request):
 			"""add +91 to phone num. and my_twilio only twilio number"""
 
 
-		return render(request,'dnt_send_sms.html',{})
+		return render(request,'home.html',{})
 
 	else:
 
