@@ -46,8 +46,9 @@ def userregister(request):
 		post.gender=request.POST.get('sex')
 		post.pincode=request.POST.get('pincode')
 		post.date_of_birth=request.POST.get('date_of_birth')
+		post.user_id=request.user.id
 		post.save()
-		return render(request,'home.html',{})
+		return render(request,'user_profile.html',{})
 
 	else:
 
@@ -73,7 +74,22 @@ def dntregister(request):
 		return render(request,'dntregister.html',{})
 
 
-def signin(request):
+def usersignin(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect("userregister")
+    else:
+        form = UserCreationForm()
+    return render(request, 'signin.html', {'form': form})
+
+
+def dntsignin(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -87,49 +103,7 @@ def signin(request):
         form = UserCreationForm()
     return render(request, 'signin.html', {'form': form})
 
-		
-
-
-def dmtregister(request):
-	if request.method=='POST':
-		post=User_request()
-		post.dmt_name=request.POST.get('person_name')
-		post.location=request.POST.get('address')
-		post.contact_number=request.POST.get('contact_number')
-		post.email=request.POST.get('email')
-		post.pincode=request.POST.get('pincode')
-		post.sms_sent=request.POST.get('sms_sent')
-		post.sms_received=request.POST.get('sms_received')
-		post.save()
-		return render(request,'dnt_send_sms.html',{})
-
-	else:
-
-		return render(request,'userregister.html',{})
-
-
-
-
-
-#def userlogin(request):
-	#return render(request,'home.html',{})
-
-def dntlogin(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect("dnt_register")
-    else:
-        form = UserCreationForm()
-    return render(request, 'signin.html', {'form': form})	
-
-
-def dmtlogin(request):
+def dmtsignin(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -141,11 +115,38 @@ def dmtlogin(request):
             return redirect("dmt_register")
     else:
         form = UserCreationForm()
-    return render(request, 'signin.html', {'form': form})	
+    return render(request, 'signin.html', {'form': form})        
+
+		
+
+
+def dmtregister(request):
+	if request.method=='POST':
+		post=User_request()
+		post.dmt_name=request.POST.get('person_name')
+		post.location=request.POST.get('address')
+		post.contact_number=request.POST.get('contact_number')
+		post.email=request.POST.get('email')
+		post.pincode=request.POST.get('pincode')
+		post.save()
+		return render(request,'dnt_send_sms.html',{})
+
+	else:
+
+		return render(request,'dmtregister.html',{})
+
+
+
+
+
+#def userlogin(request):
+	#return render(request,'home.html',{})
+
+		
 
 
 def userprofile(request):
-	return render(request,'home.html',{})
+	return render(request,'user_profile.html',{'user':request.user})
 
 def dmtprofile(request):
 	return render(request,'home.html',{})
