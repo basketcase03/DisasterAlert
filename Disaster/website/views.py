@@ -37,6 +37,9 @@ def send_sms_dnt(request):
 		return render(request,'dnt_send_sms.html',{})
 
 
+
+
+
 def userregister(request):
 	if request.method=='POST':
 		post=User_request()
